@@ -1,0 +1,48 @@
+Policy ID: POL-003-v3.1
+Title: Identity Verification and Anti-Money Laundering Requirements
+Effective Date: 1 January 2024
+Approved By: Compliance Committee
+
+1. SCOPE
+This policy applies to all mortgage applicants in compliance with the Money Laundering Regulations 2017.
+
+2. IDENTITY VERIFICATION REQUIREMENTS
+2.1 Primary ID Documents (one required)
+- Valid UK or EU passport
+- Valid UK photocard driving licence
+- Valid national identity card (EU/EEA nationals)
+
+2.2 Secondary ID Documents (one required)
+- Bank or building society statement (dated within 3 months)
+- Utility bill (dated within 3 months, not mobile phone)
+- Council tax bill (current year)
+- HMRC correspondence (dated within 12 months)
+
+2.3 Address Verification
+- Current address must be verified with one document from section 2.2
+- Applicants at current address less than 3 years must provide previous address verification
+
+3. AML CHECKS
+3.1 Mandatory Checks
+All applicants must be screened against:
+- HM Treasury Sanctions List
+- OFAC Sanctions List
+- PEP (Politically Exposed Persons) database
+- UK fraud prevention databases (CIFAS, National Hunter)
+
+3.2 Enhanced Due Diligence
+Enhanced due diligence required for:
+- PEP applicants or close associates of PEPs
+- Applicants with addresses in high-risk jurisdictions
+- Cash deposits forming part of purchase funds exceeding £10,000
+- Source of funds cannot be verified through standard means
+
+4. DOCUMENT AUTHENTICITY
+- All identity documents must be verified using electronic verification service
+- Physical documents inspected for signs of tampering or forgery
+- Discrepancies between documents must be investigated before proceeding
+
+5. COMPLIANCE ESCALATION
+- Any AML concerns must be reported to the Money Laundering Reporting Officer (MLRO)
+- Applications with unresolved AML flags must not proceed without MLRO sign-off
+- Suspicious Activity Reports (SARs) filed within 24 hours of identification

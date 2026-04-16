@@ -1,0 +1,107 @@
+{
+  "eval_name": "rag",
+  "timestamp": "2026-04-05T21:45:29.838763",
+  "summary": {
+    "passed": 8,
+    "total": 8,
+    "accuracy_pct": 100.0
+  },
+  "cases": [
+    {
+      "query": "What is the maximum loan to income ratio allowed?",
+      "description": "Income multiple limit",
+      "expected_policy": "POL-001-v2.3",
+      "retrieved_policies": [
+        "POL-001-v2.3",
+        "POL-002-v1.8",
+        "POL-005-v1.2"
+      ],
+      "rank": 1,
+      "passed": true
+    },
+    {
+      "query": "What is the stress test interest rate for affordability?",
+      "description": "Stress test rate",
+      "expected_policy": "POL-002-v1.8",
+      "retrieved_policies": [
+        "POL-002-v1.8",
+        "POL-005-v1.2",
+        "POL-004-v2.0"
+      ],
+      "rank": 1,
+      "passed": true
+    },
+    {
+      "query": "What documents are required for identity verification?",
+      "description": "ID verification documents",
+      "expected_policy": "POL-003-v3.1",
+      "retrieved_policies": [
+        "POL-003-v3.1",
+        "POL-001-v2.3",
+        "POL-005-v1.2"
+      ],
+      "rank": 1,
+      "passed": true
+    },
+    {
+      "query": "What is the minimum credit score threshold for Experian?",
+      "description": "Credit score threshold",
+      "expected_policy": "POL-004-v2.0",
+      "retrieved_policies": [
+        "POL-004-v2.0",
+        "POL-005-v1.2",
+        "POL-002-v1.8"
+      ],
+      "rank": 1,
+      "passed": true
+    },
+    {
+      "query": "When must an application be escalated to a human underwriter?",
+      "description": "Escalation triggers",
+      "expected_policy": "POL-005-v1.2",
+      "retrieved_policies": [
+        "POL-005-v1.2",
+        "POL-002-v1.8",
+        "POL-004-v2.0"
+      ],
+      "rank": 1,
+      "passed": true
+    },
+    {
+      "query": "What happens if an applicant is a politically exposed person?",
+      "description": "PEP handling",
+      "expected_policy": "POL-003-v3.1",
+      "retrieved_policies": [
+        "POL-005-v1.2",
+        "POL-003-v3.1",
+        "POL-004-v2.0"
+      ],
+      "rank": 2,
+      "passed": true
+    },
+    {
+      "query": "What is the maximum LTV for automated approval?",
+      "description": "LTV automated approval limit",
+      "expected_policy": "POL-005-v1.2",
+      "retrieved_policies": [
+        "POL-005-v1.2",
+        "POL-002-v1.8",
+        "POL-004-v2.0"
+      ],
+      "rank": 1,
+      "passed": true
+    },
+    {
+      "query": "What are the automatic decline triggers for adverse credit?",
+      "description": "Adverse credit decline",
+      "expected_policy": "POL-004-v2.0",
+      "retrieved_policies": [
+        "POL-004-v2.0",
+        "POL-005-v1.2",
+        "POL-001-v2.3"
+      ],
+      "rank": 1,
+      "passed": true
+    }
+  ]
+}

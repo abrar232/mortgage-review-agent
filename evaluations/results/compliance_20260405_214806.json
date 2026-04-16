@@ -1,0 +1,83 @@
+{
+  "eval_name": "compliance",
+  "timestamp": "2026-04-05T21:48:06.406127",
+  "summary": {
+    "passed": 8,
+    "total": 8,
+    "accuracy_pct": 100.0
+  },
+  "cases": [
+    {
+      "description": "All checks pass \u2014 should be PASS, no human review",
+      "expected_result": "PASS",
+      "actual_result": "PASS",
+      "expected_human_review": false,
+      "actual_human_review": false,
+      "confidence_score": 1.0,
+      "passed": true
+    },
+    {
+      "description": "High LTV (88%) \u2014 should ESCALATE to human",
+      "expected_result": "ESCALATE",
+      "actual_result": "ESCALATE",
+      "expected_human_review": true,
+      "actual_human_review": true,
+      "confidence_score": 0.7,
+      "passed": true
+    },
+    {
+      "description": "Failed stress test \u2014 should ESCALATE or FAIL",
+      "expected_result": "ESCALATE",
+      "actual_result": "ESCALATE",
+      "expected_human_review": true,
+      "actual_human_review": true,
+      "confidence_score": 0.6,
+      "passed": true
+    },
+    {
+      "description": "Failed ID verification \u2014 should FAIL",
+      "expected_result": "FAIL",
+      "actual_result": "FAIL",
+      "expected_human_review": true,
+      "actual_human_review": true,
+      "confidence_score": 0.6,
+      "passed": true
+    },
+    {
+      "description": "Credit bureau decline \u2014 should FAIL",
+      "expected_result": "FAIL",
+      "actual_result": "FAIL",
+      "expected_human_review": true,
+      "actual_human_review": true,
+      "confidence_score": 0.4,
+      "passed": true
+    },
+    {
+      "description": "Credit bureau refer + adverse credit \u2014 should ESCALATE",
+      "expected_result": "ESCALATE",
+      "actual_result": "ESCALATE",
+      "expected_human_review": true,
+      "actual_human_review": true,
+      "confidence_score": 0.7,
+      "passed": true
+    },
+    {
+      "description": "Missing ID and stress test \u2014 should ESCALATE",
+      "expected_result": "ESCALATE",
+      "actual_result": "ESCALATE",
+      "expected_human_review": true,
+      "actual_human_review": true,
+      "confidence_score": 0.6,
+      "passed": true
+    },
+    {
+      "description": "Everything missing \u2014 should FAIL",
+      "expected_result": "FAIL",
+      "actual_result": "FAIL",
+      "expected_human_review": true,
+      "actual_human_review": true,
+      "confidence_score": 0.2,
+      "passed": true
+    }
+  ]
+}

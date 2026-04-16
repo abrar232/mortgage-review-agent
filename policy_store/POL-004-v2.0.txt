@@ -1,0 +1,41 @@
+Policy ID: POL-004-v2.0
+Title: Credit Scoring and Credit Bureau Assessment Policy
+Effective Date: 1 June 2024
+Approved By: Credit Risk Committee
+
+1. SCOPE
+This policy defines credit assessment requirements for all residential mortgage applications.
+
+2. CREDIT BUREAU REQUIREMENTS
+2.1 Bureau Searches
+- Full credit search required with minimum two credit reference agencies
+- Approved agencies: Experian, Equifax, TransUnion
+- Search must be conducted within 30 days of application submission
+
+2.2 Minimum Credit Score Thresholds
+- Experian: minimum score of 700 (out of 999)
+- Equifax: minimum score of 420 (out of 700)
+- TransUnion: minimum score of 625 (out of 710)
+- If scores differ, the middle score is used for assessment
+
+3. ADVERSE CREDIT CRITERIA
+3.1 Automatic Decline Triggers
+- Bankruptcy or IVA within last 6 years
+- Repossession within last 6 years
+- CCJ or default over £500 registered in last 3 years
+- More than 2 missed mortgage payments in last 24 months
+
+3.2 Referral Triggers (manual review required)
+- CCJ or default under £500 registered in last 3 years (if satisfied)
+- 1-2 missed mortgage payments in last 24 months
+- Debt management plan completed within last 3 years
+- Credit score below minimum threshold but above 80% of threshold
+
+4. EXISTING COMMITMENTS
+- All existing credit commitments must be declared
+- Undisclosed credit commitments identified on bureau search result in automatic referral
+- Credit utilisation above 80% on revolving credit requires explanation
+
+5. CREDIT SCORE ENHANCEMENT
+- Score below threshold but application otherwise strong may be referred to senior underwriter
+- Enhanced scoring criteria apply for applicants with thin credit files (fewer than 3 active accounts)

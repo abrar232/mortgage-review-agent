@@ -1,0 +1,74 @@
+{
+  "eval_name": "end_to_end",
+  "timestamp": "2026-04-05T21:50:55.631590",
+  "summary": {
+    "passed": 3,
+    "total": 3,
+    "accuracy_pct": 100.0
+  },
+  "cases": [
+    {
+      "description": "Standard application \u2014 all documents present, should PASS",
+      "application_id": "E2E-TEST-001",
+      "documents": [
+        "samples/income_statement.docx",
+        "samples/affordability_assessment.docx",
+        "samples/id_verification.docx"
+      ],
+      "expected_result": "PASS",
+      "actual_result": "PASS",
+      "expected_human_review": false,
+      "actual_human_review": false,
+      "confidence_score": 0.9,
+      "compliance_reasons": [
+        "\u2713 ID verification passed",
+        "\u2713 Affordability stress test passed",
+        "\u2713 LTV 79.7% within automated approval limit (\u226480%)",
+        "\u2713 Credit bureau checks passed (all 3 bureaus)",
+        "\u26a0 Adverse credit history found \u2014 referral required per POL-004"
+      ],
+      "passed": true
+    },
+    {
+      "description": "Missing ID document \u2014 should ESCALATE",
+      "application_id": "E2E-TEST-002",
+      "documents": [
+        "samples/income_statement.docx",
+        "samples/affordability_assessment.docx"
+      ],
+      "expected_result": "ESCALATE",
+      "actual_result": "ESCALATE",
+      "expected_human_review": true,
+      "actual_human_review": true,
+      "confidence_score": 0.7,
+      "compliance_reasons": [
+        "\u26a0 ID verification status not found",
+        "\u2713 Affordability stress test passed",
+        "\u2713 LTV 79.7% within automated approval limit (\u226480%)",
+        "\u2713 Credit bureau checks passed (all 3 bureaus)",
+        "\u26a0 Adverse credit history found \u2014 referral required per POL-004"
+      ],
+      "passed": true
+    },
+    {
+      "description": "Only income statement \u2014 most fields missing, should ESCALATE or FAIL",
+      "application_id": "E2E-TEST-003",
+      "documents": [
+        "samples/income_statement.docx"
+      ],
+      "expected_result": "ESCALATE",
+      "actual_result": "FAIL",
+      "expected_human_review": true,
+      "actual_human_review": true,
+      "confidence_score": 0.35,
+      "compliance_reasons": [
+        "\u26a0 ID verification status not found",
+        "\u26a0 Stress test result not found",
+        "\u26a0 LTV ratio not found",
+        "\u2713 Credit bureau checks passed (all 3 bureaus)",
+        "\u26a0 Adverse credit history found \u2014 referral required per POL-004"
+      ],
+      "passed": true
+    }
+  ]
+}

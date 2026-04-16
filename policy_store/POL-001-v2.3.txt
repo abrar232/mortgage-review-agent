@@ -1,0 +1,34 @@
+Policy ID: POL-001-v2.3
+Title: Income Verification Requirements
+Effective Date: 1 January 2024
+Approved By: Credit Risk Committee
+
+1. SCOPE
+This policy applies to all residential mortgage applications submitted to Northgate Building Society.
+
+2. INCOME DOCUMENTATION REQUIREMENTS
+2.1 Employed Applicants
+- Minimum 3 months consecutive payslips required
+- Most recent P60 or employer reference letter
+- Bank statements showing salary credits for last 3 months
+- Employment contract for applicants with less than 12 months tenure
+
+2.2 Acceptable Income Types
+- Basic salary: 100% of gross annual salary accepted
+- Regular overtime: up to 50% of average overtime over 24 months
+- Bonuses: up to 50% of average bonus over 24 months if evidenced
+- Commission: up to 50% of average commission over 24 months
+
+2.3 Minimum Income Thresholds
+- Single applicant: minimum £25,000 gross annual income
+- Joint applicants: minimum £35,000 combined gross annual income
+
+3. INCOME MULTIPLE LIMITS
+- Maximum loan-to-income ratio: 4.5x gross annual income for standard applications
+- Up to 5.5x income permitted for applicants earning above £75,000 subject to enhanced affordability assessment
+- Income multiples are calculated on basic salary only; bonus and overtime excluded from multiple calculation
+
+4. VERIFICATION STANDARDS
+- All income documents must be dated within 90 days of application
+- Documents must be original or certified copies
+- Employer details must match Companies House records

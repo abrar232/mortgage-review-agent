@@ -1,0 +1,130 @@
+{
+  "eval_name": "extraction",
+  "timestamp": "2026-04-05T21:47:30.062300",
+  "summary": {
+    "passed": 17,
+    "total": 17,
+    "accuracy_pct": 100.0
+  },
+  "cases": [
+    {
+      "document": "samples/income_statement.docx",
+      "field": "applicant_name",
+      "expected": "James Arthur Whitfield",
+      "actual": "James Arthur Whitfield",
+      "passed": true
+    },
+    {
+      "document": "samples/income_statement.docx",
+      "field": "date_of_birth",
+      "expected": "14 March 1988",
+      "actual": "14 March 1988",
+      "passed": true
+    },
+    {
+      "document": "samples/income_statement.docx",
+      "field": "annual_income",
+      "expected": "\u00a372,700",
+      "actual": "\u00a372,700",
+      "passed": true
+    },
+    {
+      "document": "samples/income_statement.docx",
+      "field": "application_reference",
+      "expected": "MRA-2024-00847",
+      "actual": "MRA-2024-00847",
+      "passed": true
+    },
+    {
+      "document": "samples/income_statement.docx",
+      "field": "raw_document_type",
+      "expected": "income_statement",
+      "actual": "income_statement",
+      "passed": true
+    },
+    {
+      "document": "samples/affordability_assessment.docx",
+      "field": "loan_amount",
+      "expected": "\u00a3307,000",
+      "actual": "\u00a3307,000",
+      "passed": true
+    },
+    {
+      "document": "samples/affordability_assessment.docx",
+      "field": "purchase_price",
+      "expected": "\u00a3385,000",
+      "actual": "\u00a3385,000",
+      "passed": true
+    },
+    {
+      "document": "samples/affordability_assessment.docx",
+      "field": "ltv_ratio",
+      "expected": "79.7%",
+      "actual": "79.7%",
+      "passed": true
+    },
+    {
+      "document": "samples/affordability_assessment.docx",
+      "field": "stress_test_result",
+      "expected": "PASS",
+      "actual": "PASS",
+      "passed": true
+    },
+    {
+      "document": "samples/affordability_assessment.docx",
+      "field": "property_address",
+      "expected": "42 Elmwood Drive, Birmingham, B15 3TN",
+      "actual": "42 Elmwood Drive, Birmingham, B15 3TN",
+      "passed": true
+    },
+    {
+      "document": "samples/affordability_assessment.docx",
+      "field": "application_reference",
+      "expected": "MRA-2024-00847",
+      "actual": "MRA-2024-00847",
+      "passed": true
+    },
+    {
+      "document": "samples/affordability_assessment.docx",
+      "field": "raw_document_type",
+      "expected": "affordability_assessment",
+      "actual": "affordability_assessment",
+      "passed": true
+    },
+    {
+      "document": "samples/id_verification.docx",
+      "field": "applicant_name",
+      "expected": "James Arthur Whitfield",
+      "actual": "James Arthur Whitfield",
+      "passed": true
+    },
+    {
+      "document": "samples/id_verification.docx",
+      "field": "date_of_birth",
+      "expected": "14 March 1988",
+      "actual": "14 March 1988",
+      "passed": true
+    },
+    {
+      "document": "samples/id_verification.docx",
+      "field": "id_verification_status",
+      "expected": "PASS",
+      "actual": "PASS",
+      "passed": true
+    },
+    {
+      "document": "samples/id_verification.docx",
+      "field": "application_reference",
+      "expected": "MRA-2024-00847",
+      "actual": "MRA-2024-00847",
+      "passed": true
+    },
+    {
+      "document": "samples/id_verification.docx",
+      "field": "raw_document_type",
+      "expected": "id_verification",
+      "actual": "id_verification",
+      "passed": true
+    }
+  ]
+}

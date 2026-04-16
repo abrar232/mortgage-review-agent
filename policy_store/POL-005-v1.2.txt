@@ -1,0 +1,52 @@
+Policy ID: POL-005-v1.2
+Title: Human Escalation, Review and Handoff Policy
+Effective Date: 1 January 2024
+Approved By: Operations Committee
+
+1. SCOPE
+This policy defines when automated mortgage review must be escalated to a human underwriter.
+
+2. MANDATORY ESCALATION TRIGGERS
+The following conditions require immediate escalation to a human reviewer:
+- Any AML or sanctions flag identified during screening
+- Applicant identified as PEP or close associate of PEP
+- Identity verification failure or document authenticity concern
+- Loan amount exceeding £750,000
+- LTV exceeding 85%
+- Self-employed applicants (require specialist underwriting)
+- Applicants with more than 4 existing credit commitments
+- Income from multiple sources requiring complex assessment
+- Non-standard property types (ex-local authority, high-rise above 6 floors, etc.)
+- Any application where automated confidence score is below 75%
+
+3. ESCALATION PROCEDURE
+3.1 Handoff Requirements
+When escalating to human review, the following must be included:
+- Full application reference and applicant details
+- Reason for escalation with specific policy clause reference
+- All extracted document data and verification results
+- Credit bureau results and score
+- Automated assessment summary
+- Recommended action if applicable
+
+3.2 SLA Requirements
+- Standard escalation: reviewed within 2 business days
+- Urgent escalation (AML/fraud concern): reviewed within 4 hours
+- Complex cases: reviewed within 5 business days
+
+4. AUTOMATED APPROVAL CRITERIA
+Applications may proceed without human review only if ALL of the following are met:
+- Identity verification: PASS
+- AML and sanctions check: CLEAR
+- Credit score: above minimum threshold for all bureaus
+- Affordability: PASS including stress test
+- LTV: 80% or below
+- Loan amount: £750,000 or below
+- Income type: employed only (PAYE)
+- Automated confidence score: 75% or above
+- No adverse credit triggers in section 3 of POL-004
+
+5. AUDIT AND OVERSIGHT
+- All automated decisions logged with full reasoning trail
+- 10% of automated approvals subject to monthly retrospective review
+- Any pattern of incorrect automated decisions triggers policy review

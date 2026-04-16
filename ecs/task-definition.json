@@ -1,0 +1,100 @@
+{
+  "family": "mortgage-review-agent",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "1024",
+  "memory": "2048",
+  "executionRoleArn": "arn:aws:iam::666127452756:role/mortgage-ecs-task-execution-role",
+  "taskRoleArn": "arn:aws:iam::666127452756:role/mortgage-review-agent-role",
+  "containerDefinitions": [
+    {
+      "name": "mortgage-review-agent",
+      "image": "666127452756.dkr.ecr.eu-west-2.amazonaws.com/mortgage-review-agent:latest",
+      "portMappings": [
+        {
+          "containerPort": 8000,
+          "protocol": "tcp"
+        }
+      ],
+      "environment": [
+        {"name": "AWS_REGION", "value": "eu-west-2"},
+        {"name": "AWS_ACCOUNT_ID", "value": "666127452756"},
+        {"name": "DYNAMODB_STATE_TABLE", "value": "mortgage-agent-state"},
+        {"name": "DYNAMODB_MEMORY_TABLE", "value": "mortgage-agent-memory"},
+        {"name": "SQS_INGESTION_QUEUE_URL", "value": "https://sqs.eu-west-2.amazonaws.com/666127452756/mortgage-ingestion"},
+        {"name": "SQS_COMPLIANCE_QUEUE_URL", "value": "https://sqs.eu-west-2.amazonaws.com/666127452756/mortgage-compliance"},
+        {"name": "SQS_HANDOFF_QUEUE_URL", "value": "https://sqs.eu-west-2.amazonaws.com/666127452756/mortgage-handoff"},
+        {"name": "S3_DOCUMENTS_BUCKET", "value": "mortgage-application-documents-666127452756"},
+        {"name": "S3_POLICY_DOCS_BUCKET", "value": "mortgage-policy-store-666127452756"},
+        {"name": "CLOUDWATCH_LOG_GROUP", "value": "/mortgage-review-agent/prod"},
+        {"name": "CLOUDWATCH_METRICS_NAMESPACE", "value": "MortgageReviewAgent"},
+        {"name": "OPENSEARCH_ENDPOINT", "value": "https://localhost:9200"},
+        {"name": "OPENSEARCH_USERNAME", "value": "admin"},
+        {"name": "OPENSEARCH_PASSWORD", "value": "Mortgage@123"},
+        {"name": "BEDROCK_MODEL_ID", "value": "eu.anthropic.claude-sonnet-4-5-20250929-v1:0"}
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/mortgage-review-agent/prod",
+          "awslogs-region": "eu-west-2",
+          "awslogs-stream-prefix": "ecs"
+        }
+      },
+      "essential": true
+    },
+    {
+      "name": "opensearch-dashboards",
+      "image": "opensearchproject/opensearch-dashboards:2.13.0",
+      "portMappings": [
+        {
+          "containerPort": 5601,
+          "protocol": "tcp"
+        }
+      ],
+      "environment": [
+        {"name": "OPENSEARCH_HOSTS", "value": "[\"https://localhost:9200\"]"},
+        {"name": "OPENSEARCH_USERNAME", "value": "admin"},
+        {"name": "OPENSEARCH_PASSWORD", "value": "Mortgage@123"},
+        {"name": "DISABLE_SECURITY_DASHBOARDS_PLUGIN", "value": "false"}
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/mortgage-review-agent/prod",
+          "awslogs-region": "eu-west-2",
+          "awslogs-stream-prefix": "dashboards"
+        }
+      },
+      "essential": false
+    },
+    {
+      "name": "mortgage-review-frontend",
+      "image": "666127452756.dkr.ecr.eu-west-2.amazonaws.com/mortgage-review-frontend:latest",
+      "portMappings": [
+        {
+          "containerPort": 8501,
+          "protocol": "tcp"
+        }
+      ],
+      "environment": [
+        {"name": "API_URL", "value": "http://localhost:8000"}
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/mortgage-review-agent/prod",
+          "awslogs-region": "eu-west-2",
+          "awslogs-stream-prefix": "frontend"
+        }
+      },
+      "essential": false,
+      "dependsOn": [
+        {
+          "containerName": "mortgage-review-agent",
+          "condition": "START"
+        }
+      ]
+    }
+  ]
+}

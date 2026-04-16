@@ -1,0 +1,43 @@
+Policy ID: POL-002-v1.8
+Title: Affordability Assessment and Stress Testing Requirements
+Effective Date: 1 March 2024
+Approved By: Credit Risk Committee
+
+1. SCOPE
+This policy defines affordability assessment requirements in line with FCA MCOB 11.6 guidelines.
+
+2. AFFORDABILITY CALCULATION
+2.1 Committed Expenditure
+The following must be included in affordability calculations:
+- All existing credit commitments (loans, credit cards, hire purchase)
+- Student loan repayments
+- Child maintenance payments
+- Ground rent and service charges for leasehold properties
+- Any other regular financial commitments
+
+2.2 Residual Income Requirements
+After mortgage payment and all committed expenditure, minimum residual income:
+- Single applicant: £500 per month
+- Joint applicants: £750 per month
+- Per dependent child: additional £200 per month
+
+3. STRESS TESTING
+3.1 Interest Rate Stress Test
+- All applications must be stress tested at the higher of:
+  a) Initial mortgage rate plus 3%
+  b) 8% flat rate
+- Application must pass stress test to proceed
+
+3.2 Stress Test Pass Criteria
+- Monthly payment at stress rate must not exceed 45% of net monthly income
+- Residual income after stress test payment must meet minimum thresholds in section 2.2
+
+4. LOAN-TO-VALUE LIMITS
+- Maximum LTV for residential purchase: 90%
+- Maximum LTV for remortgage: 85%
+- LTV above 85% requires enhanced credit scoring
+
+5. AFFORDABILITY OVERRIDE
+- Cases failing affordability by less than 5% may be referred to senior underwriter
+- Override must be documented with clear justification
+- Maximum 10% of monthly approvals may use affordability override

@@ -1,0 +1,88 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mortgage-review-agent
+  namespace: default
+  labels:
+    app: mortgage-review-agent
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mortgage-review-agent
+  template:
+    metadata:
+      labels:
+        app: mortgage-review-agent
+    spec:
+      serviceAccountName: mortgage-review-agent-sa
+      containers:
+        - name: mortgage-review-agent
+          image: 666127452756.dkr.ecr.eu-west-2.amazonaws.com/mortgage-review-agent:latest
+          ports:
+            - containerPort: 8000
+          env:
+            - name: AWS_REGION
+              value: "eu-west-2"
+            - name: AWS_ACCOUNT_ID
+              value: "666127452756"
+            - name: BEDROCK_MODEL_ID
+              value: "eu.anthropic.claude-sonnet-4-5-20250929-v1:0"
+            - name: DYNAMODB_STATE_TABLE
+              value: "mortgage-agent-state"
+            - name: DYNAMODB_MEMORY_TABLE
+              value: "mortgage-agent-memory"
+            - name: SQS_INGESTION_QUEUE_URL
+              value: "https://sqs.eu-west-2.amazonaws.com/666127452756/mortgage-ingestion"
+            - name: SQS_COMPLIANCE_QUEUE_URL
+              value: "https://sqs.eu-west-2.amazonaws.com/666127452756/mortgage-compliance"
+            - name: SQS_HANDOFF_QUEUE_URL
+              value: "https://sqs.eu-west-2.amazonaws.com/666127452756/mortgage-handoff"
+            - name: S3_DOCUMENTS_BUCKET
+              value: "mortgage-application-documents-666127452756"
+            - name: S3_POLICY_DOCS_BUCKET
+              value: "mortgage-policy-store-666127452756"
+            - name: CLOUDWATCH_LOG_GROUP
+              value: "/mortgage-review-agent/prod"
+            - name: CLOUDWATCH_METRICS_NAMESPACE
+              value: "MortgageReviewAgent"
+            - name: OPENSEARCH_ENDPOINT
+              valueFrom:
+                secretKeyRef:
+                  name: mortgage-secrets
+                  key: opensearch-endpoint
+            - name: OPENSEARCH_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: mortgage-secrets
+                  key: opensearch-username
+            - name: OPENSEARCH_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mortgage-secrets
+                  key: opensearch-password
+            - name: ANTHROPIC_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: mortgage-secrets
+                  key: anthropic-api-key
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 30
+            periodSeconds: 30
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 8000
+            initialDelaySeconds: 15
+            periodSeconds: 10
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "250m"
+            limits:
+              memory: "1Gi"
+              cpu: "500m"
+      terminationGracePeriodSeconds: 30

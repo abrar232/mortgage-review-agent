@@ -1,0 +1,58 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "dynamodb:PutItem",
+        "dynamodb:GetItem",
+        "dynamodb:UpdateItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:Query",
+        "dynamodb:Scan"
+      ],
+      "Resource": [
+        "arn:aws:dynamodb:eu-west-2:666127452756:table/mortgage-agent-state",
+        "arn:aws:dynamodb:eu-west-2:666127452756:table/mortgage-agent-memory"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "sqs:SendMessage",
+        "sqs:ReceiveMessage",
+        "sqs:DeleteMessage",
+        "sqs:GetQueueAttributes"
+      ],
+      "Resource": [
+        "arn:aws:sqs:eu-west-2:666127452756:mortgage-ingestion",
+        "arn:aws:sqs:eu-west-2:666127452756:mortgage-compliance",
+        "arn:aws:sqs:eu-west-2:666127452756:mortgage-handoff"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject",
+        "s3:PutObject",
+        "s3:ListBucket"
+      ],
+      "Resource": [
+        "arn:aws:s3:::mortgage-application-documents-666127452756",
+        "arn:aws:s3:::mortgage-application-documents-666127452756/*",
+        "arn:aws:s3:::mortgage-policy-store-666127452756",
+        "arn:aws:s3:::mortgage-policy-store-666127452756/*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "logs:CreateLogGroup",
+        "logs:CreateLogStream",
+        "logs:PutLogEvents",
+        "cloudwatch:PutMetricData"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
