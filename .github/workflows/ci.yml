@@ -10,6 +10,20 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
+    services:
+      opensearch:
+        image: opensearchproject/opensearch:2.13.0
+        env:
+          discovery.type: single-node
+          OPENSEARCH_INITIAL_ADMIN_PASSWORD: Mortgage@123
+        ports:
+          - 9200:9200
+        options: >-
+          --health-cmd "curl -sk https://localhost:9200 -u admin:Mortgage@123 | grep -q opensearch"
+          --health-interval 10s
+          --health-timeout 10s
+          --health-retries 10
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -25,13 +39,27 @@ jobs:
       - name: Install dependencies
         run: uv pip install --system -r requirements.txt
 
-      - name: Run unit tests
+      - name: Index policy documents
         env:
-          AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           OPENSEARCH_ENDPOINT: https://localhost:9200
           OPENSEARCH_USERNAME: admin
           OPENSEARCH_PASSWORD: Mortgage@123
+          AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          SQS_INGESTION_QUEUE_URL: https://sqs.eu-west-2.amazonaws.com/666127452756/mortgage-ingestion
+          SQS_COMPLIANCE_QUEUE_URL: https://sqs.eu-west-2.amazonaws.com/666127452756/mortgage-compliance
+          SQS_HANDOFF_QUEUE_URL: https://sqs.eu-west-2.amazonaws.com/666127452756/mortgage-handoff
+        run: |
+          python scripts/create_policy_docs.py
+          python -m rag.indexer
+
+      - name: Run unit tests
+        env:
+          OPENSEARCH_ENDPOINT: https://localhost:9200
+          OPENSEARCH_USERNAME: admin
+          OPENSEARCH_PASSWORD: Mortgage@123
+          AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           SQS_INGESTION_QUEUE_URL: https://sqs.eu-west-2.amazonaws.com/666127452756/mortgage-ingestion
           SQS_COMPLIANCE_QUEUE_URL: https://sqs.eu-west-2.amazonaws.com/666127452756/mortgage-compliance
           SQS_HANDOFF_QUEUE_URL: https://sqs.eu-west-2.amazonaws.com/666127452756/mortgage-handoff
