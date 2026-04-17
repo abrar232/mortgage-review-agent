@@ -1,0 +1,32 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - aws ecr get-login-password --region eu-west-2 | docker login --username AWS --password-stdin 666127452756.dkr.ecr.eu-west-2.amazonaws.com
+      - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+      - IMAGE_TAG=${COMMIT_HASH:=latest}
+
+  build:
+    commands:
+      - echo Running unit tests...
+      - pip install uv
+      - uv pip install --system -r requirements.txt
+      - pytest tests/unit/ -v --tb=short
+      - echo Building Docker image...
+      - docker build -t mortgage-review-agent .
+      - docker tag mortgage-review-agent:latest 666127452756.dkr.ecr.eu-west-2.amazonaws.com/mortgage-review-agent:latest
+      - docker tag mortgage-review-agent:latest 666127452756.dkr.ecr.eu-west-2.amazonaws.com/mortgage-review-agent:$IMAGE_TAG
+
+  post_build:
+    commands:
+      - echo Pushing image to ECR...
+      - docker push 666127452756.dkr.ecr.eu-west-2.amazonaws.com/mortgage-review-agent:latest
+      - docker push 666127452756.dkr.ecr.eu-west-2.amazonaws.com/mortgage-review-agent:$IMAGE_TAG
+      - echo Writing image definitions file...
+      - printf '[{"name":"mortgage-review-agent","imageUri":"%s"}]' 666127452756.dkr.ecr.eu-west-2.amazonaws.com/mortgage-review-agent:latest > imagedefinitions.json
+
+artifacts:
+  files:
+    - imagedefinitions.json
