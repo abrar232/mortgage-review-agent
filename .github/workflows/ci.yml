@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Install uv
+        run: pip install uv
+
+      - name: Install dependencies
+        run: uv pip install --system -r requirements.txt
+
+      - name: Run unit tests
+        env:
+          AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENSEARCH_ENDPOINT: https://localhost:9200
+          OPENSEARCH_USERNAME: admin
+          OPENSEARCH_PASSWORD: Mortgage@123
+          SQS_INGESTION_QUEUE_URL: https://sqs.eu-west-2.amazonaws.com/666127452756/mortgage-ingestion
+          SQS_COMPLIANCE_QUEUE_URL: https://sqs.eu-west-2.amazonaws.com/666127452756/mortgage-compliance
+          SQS_HANDOFF_QUEUE_URL: https://sqs.eu-west-2.amazonaws.com/666127452756/mortgage-handoff
+        run: pytest tests/unit/ -v --tb=short
